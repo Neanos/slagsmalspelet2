@@ -1,10 +1,16 @@
 using System;
 
-namespace slagsmalspelet2;
-
 public class Fighter
 {
-    public string name;
+  public string name;
+  public int hp = 50;
+  public Weapon weapon;
 
-    public int hp;
+  public void Attack(Fighter target)
+  {
+    int damage = weapon.GetDamage();
+    target.hp -= damage;
+    target.hp = Math.Max(0, target.hp);
+    Console.WriteLine($"{name} gör {damage} skada på {target.name}");
+  }
 }
